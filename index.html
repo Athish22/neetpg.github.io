@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closing Rank: NEET PG counselling cut-offs</title>
+<meta name="description" content="Free NEET PG closing ranks for every college, course, quota and category, built from the official MCC allotment results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist: #EEF3F2;
+  --surface: #FFFFFF;
+  --ink: #10262B;
+  --muted: #566C70;
+  --line: #D3DDDB;
+  --teal: #0F5C63;
+  --teal-soft: #CFE4E2;
+  --marker: #FFCF33;
+  --marker-ink: #4A3800;
+  --miss: #B9C4C3;
+  --display: "Bricolage Grotesque", "Public Sans", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mist: #0D1D21;
+    --surface: #142A2F;
+    --ink: #E6EFEE;
+    --muted: #94ABAE;
+    --line: #27434A;
+    --teal: #6CC5C9;
+    --teal-soft: #1F4A50;
+    --marker: #FFCF33;
+    --marker-ink: #FFE9A3;
+    --miss: #3A555B;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--ink);
+  font: 400 16px/1.5 var(--body);
+  font-variant-numeric: tabular-nums;
+}
+a { color: var(--teal); }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--marker); outline-offset: 2px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+/* masthead */
+.mast { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 0 0; }
+.mast .name { font: 700 20px/1 var(--display); letter-spacing: -0.01em; }
+.mast nav { display: flex; gap: 18px; font-size: 14px; }
+
+/* the sentence that doubles as the main control */
+.ask { padding: 44px 0 30px; }
+.ask h1 {
+  margin: 0;
+  font: 500 clamp(30px, 5.4vw, 60px)/1.14 var(--display);
+  letter-spacing: -0.025em;
+  max-width: 19em;
+}
+.ask h1 input, .ask h1 select {
+  font: inherit; font-weight: 700; letter-spacing: inherit;
+  color: var(--marker-ink);
+  background: linear-gradient(transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  border: 0; border-radius: 0; padding: 0 0.08em; margin: 0;
+}
+@media (prefers-color-scheme: dark) {
+  .ask h1 input, .ask h1 select { background: none; border-bottom: 0.07em solid var(--marker); }
+}
+.ask h1 input { width: 3.7em; -moz-appearance: textfield; appearance: textfield; }
+.ask h1 input::-webkit-outer-spin-button, .ask h1 input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.ask h1 input::placeholder { color: var(--marker-ink); opacity: 0.45; }
+.ask h1 select { cursor: pointer; max-width: 100%; field-sizing: content; }
+.ask h1 select option { font: 400 16px var(--body); color: #10262B; background: #fff; }
+.ask p { margin: 18px 0 0; max-width: 62ch; color: var(--muted); }
+
+/* filters */
+.filters {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px;
+  padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+}
+.filters label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); min-width: 0; }
+.filters select, .filters input[type=search] {
+  width: 100%; height: 40px; padding: 0 10px; background: var(--mist);
+  border: 1px solid var(--line); border-radius: 6px; font-size: 15px; color: var(--ink);
+}
+.filters .wide { grid-column: span 2; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; padding: 18px 0 10px; }
+.bar .count { font-weight: 600; }
+.bar .opts { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 14px; }
+.bar .opts label { display: inline-flex; gap: 6px; align-items: center; }
+.bar select { height: 34px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 0 8px; }
+
+/* results */
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); }
+thead th {
+  position: sticky; top: 0; z-index: 2; background: var(--surface);
+  text-align: left; font-size: 13px; font-weight: 600; color: var(--muted);
+  padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: bottom;
+}
+tbody td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14.5px; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: color-mix(in srgb, var(--teal-soft) 35%, transparent); }
+tbody tr.miss { color: var(--muted); }
+.inst { font-weight: 600; font-size: 15px; }
+.sub { font-size: 13px; color: var(--muted); }
+th.num, td.num { text-align: right; white-space: nowrap; }
+td.num.hit { font-weight: 600; color: var(--teal); }
+td.num .n { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.col-ruler { width: 250px; }
+
+/* the rank ruler: one square-root scale shared by every row, so your rank is one vertical line */
+.ruler { position: relative; height: 26px; min-width: 200px; }
+.ruler::before { content: ""; position: absolute; left: 0; right: 0; top: 12px; height: 2px; background: var(--line); }
+.ruler .span { position: absolute; top: 8px; height: 10px; min-width: 3px; border-radius: 2px; background: var(--teal); }
+tr.miss .ruler .span { background: var(--miss); }
+.ruler .you { position: absolute; top: -12px; bottom: -12px; width: 3px; margin-left: -1.5px; background: var(--marker); }
+.axis { position: relative; height: 16px; min-width: 200px; font-size: 11px; font-weight: 400; }
+.axis span { position: absolute; transform: translateX(-50%); }
+.axis span:first-child { transform: none; }
+
+.more { display: block; margin: 18px auto 0; padding: 10px 22px; border: 1px solid var(--teal); border-radius: 6px; background: transparent; color: var(--teal); font-weight: 600; cursor: pointer; }
+.empty { padding: 44px 20px; text-align: center; background: var(--surface); border: 1px solid var(--line); }
+.empty b { display: block; font: 700 20px var(--display); margin-bottom: 6px; }
+
+/* detail */
+dialog { width: min(820px, calc(100vw - 24px)); max-height: calc(100vh - 24px); padding: 0; border: 0; border-radius: 12px; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: rgba(8, 24, 28, 0.55); }
+.sheet { padding: 24px; }
+.sheet header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.sheet h2 { margin: 0; font: 700 24px/1.2 var(--display); letter-spacing: -0.01em; }
+.sheet .close { border: 1px solid var(--line); background: transparent; border-radius: 6px; padding: 6px 12px; cursor: pointer; flex: none; }
+.sheet h3 { font: 600 15px var(--body); margin: 22px 0 8px; }
+.sheet table { border: 1px solid var(--line); }
+.sheet tbody tr { cursor: default; }
+.sheet tbody tr:hover { background: none; }
+.sheet .scroll { overflow-x: auto; }
+.ranks { display: flex; flex-wrap: wrap; gap: 6px; }
+.ranks span { padding: 2px 8px; border-radius: 4px; background: var(--mist); font-size: 13px; }
+.ranks span.you-in { background: var(--marker); color: #4A3800; font-weight: 600; }
+
+footer { padding: 46px 0 60px; color: var(--muted); font-size: 14px; }
+footer h2 { font: 700 18px var(--display); color: var(--ink); margin: 0 0 8px; }
+footer p { max-width: 72ch; margin: 0 0 10px; }
+
+@media (max-width: 720px) {
+  .wrap { padding: 0 14px; }
+  .ask { padding: 28px 0 22px; }
+}
+@media (max-width: 980px) {
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .results thead { display: none; }
+  .results, .results tbody { display: block; border: 0; background: none; }
+  .results tr { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px 8px; padding: 12px; margin-bottom: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  .results td { display: block; padding: 0; border: 0; }
+  .results td.c-inst, .results td.c-course, .results td.c-seat { grid-column: 1 / -1; }
+  .results td.c-seat { padding-bottom: 8px; }
+  .results td.num { text-align: left; }
+  .results td.num::before { content: attr(data-l); display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
+  .results td.col-ruler { display: block; width: auto; grid-column: 1 / -1; padding-top: 10px; }
+  .ruler .you { top: -4px; bottom: -4px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] { animation: rise 0.16s ease-out; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mast">
+    <div class="name">Closing Rank</div>
+    <nav><a href="#about">Where the data comes from</a></nav>
+  </div>
+
+  <section class="ask">
+    <h1>
+      With rank
+      <input id="rank" type="number" inputmode="numeric" min="1" max="300000" placeholder="12500" aria-label="Your NEET PG All India rank">
+      as
+      <select id="cat" aria-label="Your category">
+        <option value="">any category</option>
+        <option value="General">General</option>
+        <option value="OBC">OBC</option>
+        <option value="SC">SC</option>
+        <option value="ST">ST</option>
+        <option value="EWS">EWS</option>
+      </select>,
+      which seats would I have got in
+      <select id="year" aria-label="Counselling year"></select>?
+    </h1>
+    <p id="lede">Loading the allotment results…</p>
+  </section>
+
+  <section class="filters" aria-label="Filter seats">
+    <label class="wide">College or city
+      <input id="q" type="search" placeholder="Search, for example Kozhikode" autocomplete="off">
+    </label>
+    <label class="wide">Course
+      <select id="course"><option value="">All courses</option></select>
+    </label>
+    <label>Degree
+      <select id="type"><option value="">All degrees</option></select>
+    </label>
+    <label>State
+      <select id="state"><option value="">All states</option></select>
+    </label>
+    <label class="wide">Quota
+      <select id="quota"><option value="">All quotas</option></select>
+    </label>
+    <label class="wide">Seat category
+      <select id="seat"><option value="">Seats I am eligible for</option></select>
+    </label>
+    <label class="wide">Sort by
+      <select id="sort">
+        <option value="close">Hardest to get first</option>
+        <option value="near">Closest to my rank</option>
+        <option value="easy">Easiest to get first</option>
+        <option value="name">College name</option>
+      </select>
+    </label>
+  </section>
+
+  <div class="bar">
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="opts">
+      <label><input type="checkbox" id="reach" checked> Only seats within my rank</label>
+      <label><input type="checkbox" id="pwd"> Include PwD seats</label>
+    </div>
+  </div>
+
+  <table class="results" id="results">
+    <thead>
+      <tr>
+        <th>College</th>
+        <th>Course</th>
+        <th>Quota and seat</th>
+        <th class="num" title="Last rank allotted in round 1">Round 1</th>
+        <th class="num" title="Last rank allotted in round 2">Round 2</th>
+        <th class="num" title="Last rank allotted in round 3">Round 3</th>
+        <th class="num" title="Last rank allotted in the stray vacancy round">Stray</th>
+        <th class="col-ruler"><div class="axis" id="axis"></div></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div id="empty" class="empty" hidden></div>
+  <button class="more" id="more" hidden>Show 100 more</button>
+
+  <footer id="about">
+    <h2>Where the data comes from</h2>
+    <p>Every number here is counted from the final seat allotment results that the Medical Counselling Committee (MCC) publishes as PDFs on <a href="https://mcc.nic.in/archive-pg/" rel="noopener">mcc.nic.in</a> after each round of All India counselling. A closing rank is the highest All India rank that was allotted that seat in that round. The figure under it is how many candidates were allotted.</p>
+    <p>This covers the MCC rounds only: All India quota, deemed universities, central universities, DNB and AFMS seats. State quota counselling, fees, stipends and bond terms are not included, because no official source publishes them in one place.</p>
+    <p>Past closing ranks are a guide, not a promise. Seat counts, reservation rules and the number of candidates change every year. Check the MCC information bulletin before you fill choices. This site is not affiliated with MCC, NBEMS or any counselling service.</p>
+    <p id="stamp"></p>
+  </footer>
+</div>
+
+<dialog id="detail" aria-labelledby="d-title"><div class="sheet" id="sheet"></div></dialog>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n) { return n.toLocaleString('en-IN'); };
+  var esc = function (s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  };
+  var PAGE = 100;
+  var D, groups = {}, maxRank = 1, logMax = 1, limit = PAGE, shown = [];
+
+  function x(rank) { return Math.max(0, Math.min(100, Math.sqrt(rank) / logMax * 100)); }
+
+  function load() {
+    fetch('data.json').then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(init).catch(function () {
+      $('lede').textContent = 'The allotment data did not load. Open this page through a web server (not as a local file) and reload.';
+    });
+  }
+
+  function init(data) {
+    D = data;
+    var R = D.rows, n = R.k.length, i;
+    for (i = 0; i < n; i++) {
+      var y = R.y[i];
+      var key = R.i[i] + '|' + R.c[i] + '|' + R.q[i] + '|' + R.a[i];
+      var byYear = groups[y] || (groups[y] = {});
+      var g = byYear[key];
+      if (!g) g = byYear[key] = { i: R.i[i], c: R.c[i], q: R.q[i], a: R.a[i], open: Infinity, close: [0, 0, 0, 0], n: [0, 0, 0, 0], last: 0 };
+      var rd = R.r[i], k = R.k[i];
+      if (k > g.close[rd]) g.close[rd] = k;
+      if (k > g.last) g.last = k;
+      if (k < g.open) g.open = k;
+      g.n[rd]++;
+      if (k > maxRank) maxRank = k;
+    }
+    for (var yy in groups) groups[yy] = Object.keys(groups[yy]).map(function (k) { return groups[yy][k]; });
+    logMax = Math.sqrt(maxRank);
+
+    fill($('year'), D.years.slice().reverse().map(function (y, j) { return [D.years.length - 1 - j, y]; }), true);
+    fill($('course'), order(D.courses.map(function (c, j) { return [j, c.n]; })));
+    fill($('type'), uniq(D.courses.map(function (c) { return c.t; })).map(function (t) { return [t, t]; }));
+    fill($('state'), uniq(D.institutes.map(function (s) { return s.s; })).sort().map(function (s) { return [s, s]; }));
+    fill($('quota'), D.quotas.map(function (q, j) { return [j, q]; }));
+    fill($('seat'), D.cats.map(function (c, j) { return [j, c + ' seats']; }));
+
+    var ax = '';
+    [1, 5000, 20000, 50000, 100000].forEach(function (t) {
+      if (t <= maxRank) ax += '<span style="left:' + x(t) + '%">' + (t >= 1000 ? t / 1000 + 'k' : t) + '</span>';
+    });
+    $('axis').innerHTML = ax;
+
+    try {
+      var saved = JSON.parse(localStorage.getItem('cr') || '{}');
+      if (saved.rank) $('rank').value = saved.rank;
+      if (saved.cat) $('cat').value = saved.cat;
+    } catch (e) {}
+
+    $('lede').textContent = 'Counted from ' + fmt(n) + ' official MCC allotments across ' + D.years.join(' and ') +
+      '. Leave the rank empty to browse every closing rank. Select a row to see each round and every rank that was allotted.';
+    $('stamp').textContent = 'Data built on ' + D.built + ' from ' + D.sources.length + ' MCC result files.';
+
+    ['rank', 'q'].forEach(function (id) { $(id).addEventListener('input', reset); });
+    ['cat', 'year', 'course', 'type', 'state', 'quota', 'seat', 'sort', 'reach', 'pwd'].forEach(function (id) { $(id).addEventListener('change', reset); });
+    $('more').addEventListener('click', function () { limit += PAGE; draw(); });
+    $('rows').addEventListener('click', function (e) {
+      var tr = e.target.closest('tr');
+      if (tr) openDetail(shown[+tr.dataset.j]);
+    });
+    $('rows').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName === 'TR') openDetail(shown[+e.target.dataset.j]);
+    });
+    $('detail').addEventListener('click', function (e) {
+      if (e.target === $('detail') || e.target.closest('.close')) $('detail').close();
+    });
+    reset();
+  }
+
+  function fill(sel, pairs, replace) {
+    var h = replace ? '' : sel.innerHTML;
+    pairs.forEach(function (p) { h += '<option value="' + esc(p[0]) + '">' + esc(p[1]) + '</option>'; });
+    sel.innerHTML = h;
+  }
+  // several hospitals share a name, so those also show where they are
+  function place(inst) {
+    if (!inst.d || !inst.a) return inst.s;
+    var a = inst.a.length > 70 ? inst.a.slice(0, 70).replace(/[\s,]+\S*$/, '') + '…' : inst.a;
+    return a + (inst.s ? ', ' + inst.s : '');
+  }
+  function uniq(a) { return a.filter(function (v, j) { return v && a.indexOf(v) === j; }); }
+  function order(pairs) { return pairs.sort(function (a, b) { return a[1].localeCompare(b[1]); }); }
+
+  function state() {
+    var rank = parseInt($('rank').value, 10);
+    return {
+      rank: rank > 0 ? rank : 0, cat: $('cat').value, year: +$('year').value,
+      q: $('q').value.trim().toLowerCase(), course: $('course').value, type: $('type').value,
+      state: $('state').value, quota: $('quota').value, seat: $('seat').value,
+      sort: $('sort').value, reach: $('reach').checked, pwd: $('pwd').checked
+    };
+  }
+
+  // seat categories a candidate of this category can be allotted
+  function eligible(s) {
+    var ok = {};
+    D.cats.forEach(function (c, j) {
+      var pwd = / PwD$/.test(c), base = c.replace(/ PwD$/, '');
+      if (pwd && !s.pwd) return;
+      if (!s.cat || base === 'Open' || base === s.cat) ok[j] = true;
+    });
+    return ok;
+  }
+
+  function reset() { limit = PAGE; compute(); draw(); }
+
+  function compute() {
+    var s = state();
+    try { localStorage.setItem('cr', JSON.stringify({ rank: s.rank, cat: s.cat })); } catch (e) {}
+    var ok = eligible(s), words = s.q ? s.q.split(/\s+/) : [];
+    var list = (groups[s.year] || []).filter(function (g) {
+      if (s.seat !== '' ? g.a !== +s.seat : !ok[g.a]) return false;
+      if (s.course !== '' && g.c !== +s.course) return false;
+      if (s.type && D.courses[g.c].t !== s.type) return false;
+      if (s.quota !== '' && g.q !== +s.quota) return false;
+      var inst = D.institutes[g.i];
+      if (s.state && inst.s !== s.state) return false;
+      if (words.length) {
+        var hay = inst.h || (inst.h = (inst.n + ' ' + inst.a + ' ' + inst.s).toLowerCase());
+        for (var w = 0; w < words.length; w++) if (hay.indexOf(words[w]) < 0) return false;
+      }
+      if (s.rank && s.reach && g.last < s.rank) return false;
+      return true;
+    });
+    var by = {
+      close: function (a, b) { return a.last - b.last; },
+      easy: function (a, b) { return b.last - a.last; },
+      near: function (a, b) { return Math.abs(a.last - s.rank) - Math.abs(b.last - s.rank); },
+      name: function (a, b) { return D.institutes[a.i].n.localeCompare(D.institutes[b.i].n) || a.last - b.last; }
+    };
+    list.sort(by[s.sort === 'near' && !s.rank ? 'close' : s.sort]);
+    shown = list;
+  }
+
+  function draw() {
+    var s = state(), h = '', top = Math.min(limit, shown.length);
+    for (var j = 0; j < top; j++) {
+      var g = shown[j], inst = D.institutes[g.i], miss = s.rank && g.last < s.rank;
+      h += '<tr tabindex="0" data-j="' + j + '"' + (miss ? ' class="miss"' : '') + '>' +
+        '<td class="c-inst"><div class="inst">' + esc(inst.n) + '</div><div class="sub">' + esc(place(inst)) + '</div></td>' +
+        '<td class="c-course">' + esc(D.courses[g.c].n) + '</td>' +
+        '<td class="c-seat">' + esc(D.quotas[g.q]) + '<div class="sub">' + esc(D.cats[g.a]) + ' seat</div></td>';
+      for (var r = 0; r < 4; r++) {
+        h += '<td class="num' + (s.rank && g.close[r] >= s.rank ? ' hit' : '') + '" data-l="' + D.rounds[r] + '">' +
+          (g.n[r] ? fmt(g.close[r]) + '<span class="n">' + g.n[r] + (g.n[r] === 1 ? ' seat' : ' seats') + '</span>' : '–') + '</td>';
+      }
+      var a = x(g.open), b = x(g.last);
+      h += '<td class="col-ruler"><div class="ruler" role="img" aria-label="Ranks ' + fmt(g.open) + ' to ' + fmt(g.last) + '">' +
+        '<div class="span" style="left:' + a + '%;width:' + (b - a) + '%"></div>' +
+        (s.rank ? '<div class="you" style="left:' + x(s.rank) + '%"></div>' : '') + '</div></td></tr>';
+    }
+    $('rows').innerHTML = h;
+    $('results').hidden = !shown.length;
+    $('more').hidden = shown.length <= limit;
+    var e = $('empty');
+    e.hidden = shown.length > 0;
+    if (!shown.length) {
+      e.innerHTML = '<b>No seats match</b>' + (s.rank && s.reach
+        ? 'No seat with these filters closed at rank ' + fmt(s.rank) + ' or later. Untick "Only seats within my rank" to see how far the cut-offs were.'
+        : 'Clear the search box or set a filter back to "All".');
+    }
+    var what = shown.length === 1 ? ' seat group' : ' seat groups';
+    $('count').textContent = s.rank && s.reach
+      ? fmt(shown.length) + what + ' closed at rank ' + fmt(s.rank) + ' or later in ' + D.years[s.year]
+      : fmt(shown.length) + what + ' in ' + D.years[s.year];
+  }
+
+  function openDetail(g) {
+    if (!g) return;
+    var s = state(), inst = D.institutes[g.i], R = D.rows, n = R.k.length;
+    var table = {}, ranks = [[], [], [], []];
+    for (var i = 0; i < n; i++) {
+      if (R.i[i] !== g.i || R.c[i] !== g.c) continue;
+      var key = R.y[i] + '|' + R.q[i] + '|' + R.a[i];
+      var t = table[key] || (table[key] = { y: R.y[i], q: R.q[i], a: R.a[i], close: [0, 0, 0, 0], n: [0, 0, 0, 0] });
+      t.n[R.r[i]]++;
+      if (R.k[i] > t.close[R.r[i]]) t.close[R.r[i]] = R.k[i];
+      if (R.y[i] === s.year && R.q[i] === g.q && R.a[i] === g.a) ranks[R.r[i]].push(R.k[i]);
+    }
+    var lines = Object.keys(table).map(function (k) { return table[k]; }).sort(function (a, b) {
+      return b.y - a.y || a.q - b.q || a.a - b.a;
+    });
+    var h = '<header><div><h2 id="d-title">' + esc(inst.n) + '</h2>' +
+      '<div class="sub">' + esc(D.courses[g.c].n) + '</div>' +
+      '<div class="sub">' + esc([inst.a, inst.s].filter(Boolean).join(', ')) + '</div></div>' +
+      '<button class="close">Close</button></header>' +
+      '<h3>Closing rank in every round, quota and seat category</h3><div class="scroll"><table><thead><tr><th>Year</th><th>Quota</th><th>Seat</th>';
+    D.rounds.forEach(function (r) { h += '<th class="num">' + r + '</th>'; });
+    h += '</tr></thead><tbody>';
+    lines.forEach(function (t) {
+      h += '<tr><td>' + D.years[t.y] + '</td><td>' + esc(D.quotas[t.q]) + '</td><td>' + esc(D.cats[t.a]) + '</td>';
+      for (var r = 0; r < 4; r++) {
+        h += '<td class="num">' + (t.n[r] ? fmt(t.close[r]) + '<span class="n">' + t.n[r] + (t.n[r] === 1 ? ' seat' : ' seats') + '</span>' : '–') + '</td>';
+      }
+      h += '</tr>';
+    });
+    h += '</tbody></table></div>';
+    ranks.forEach(function (list, r) {
+      if (!list.length) return;
+      list.sort(function (a, b) { return a - b; });
+      h += '<h3>' + D.rounds[r] + ' of ' + D.years[s.year] + ': every rank allotted a ' + esc(D.cats[g.a]) + ' seat under ' + esc(D.quotas[g.q]) + '</h3><div class="ranks">';
+      list.forEach(function (k) { h += '<span' + (s.rank && k >= s.rank ? ' class="you-in"' : '') + '>' + fmt(k) + '</span>'; });
+      h += '</div>';
+    });
+    if (s.rank) h += '<p class="sub">Highlighted ranks are at or behind your rank of ' + fmt(s.rank) + '.</p>';
+    $('sheet').innerHTML = h;
+    $('detail').showModal();
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>
